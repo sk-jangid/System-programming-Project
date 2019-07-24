@@ -1,0 +1,194 @@
+<html>
+   
+   <head>
+	
+      <title>Add Notice</title>
+       <style type = "text/css">
+ body {
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:14px;
+         }
+         label {
+            font-weight:bold;
+            width:100px;
+            font-size:14px;
+         }
+         .box {
+            border:#666666 solid 1px;
+	    
+         }
+.header{
+
+height:100px;
+
+
+}
+.header img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.header h1 {
+  position: relative;
+  top: 14px;
+  left: 10px;
+}
+.header h2 {
+  position: relative;
+  top: 14px;
+  right: 10px;
+}
+
+
+
+	
+
+</style>
+      
+
+ 
+<script type="text/javascript"> 
+function show_alert(str) { 
+var msg = str;
+alert(msg); 
+}
+</script>
+
+
+   </head>
+
+<body bgcolor = "#abc">
+
+
+
+
+<div class="navbar">
+  <a>Add Notice</a>
+
+ 
+<a href="" target= "_blank">History</a>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="header" style="background-color:#412587;">
+  		<img src="/home/jangid/Downloads/logo.png"style="width:400px;" alt="logo" />
+  		<h1 style="font-style:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registration for Students for admission in IITG</h1>
+		
+	</div>
+<div  style="height:200px;">
+
+</div>
+
+
+ 
+<div  style="float:left;width:30%;height:1000px;">
+
+</div>
+
+	<div  style="float:left;width:40%;height:300px;border-size:2px;padding:1%; border: solid red;background-color:fff;border-radius:8px;">
+
+
+ 
+       <form action="add_notice.php" method="POST">
+ 
+	  <p>
+	    <label style="color:red">*</label>
+	    <label style="font-size:20px;">Notice title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	    <input type="text" style="font-size:20px;width:400px;" name="notice_title">
+		
+	  </p>
+
+
+
+
+	 <p>
+		<label style="color:red">*</label>
+	    	<label style="font-size:20px;" accept="application/pdf">Upload Advertisement</label>(only pdf file allowed)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="file" value="Choose your Advertisement" align="right" style="width:200px;height:50px" name="filee">
+	     
+	  </p>
+	<br/>
+
+
+
+     <input type="submit" value="Submit" align="right" name="submit_notice" onclick="show_alert('Are You confirm');" style="width:200px;height:50px" />
+     
+ 
+</form>
+                 
+
+ </div>
+
+  	<div id="view_notice" style="border-radius:10px;border:solid red"> 
+		
+		<?php 
+			$username = "username"; 
+			$password = "password"; 
+			$database = "your_database"; 
+			$mysqli = new mysqli("localhost","root", '', "mtech_web_services"); 
+			$query = "SELECT * FROM news_section";
+					 	
+
+
+		 
+		 
+			echo '<table border="0" cellspacing="10" cellpadding="2"> 
+			      <tr> 
+				  <td> <font face="Arial"></font> </td> 
+				  <td> <font face="Arial"></font> </td> 
+				  <td> <font face="Arial"></font> </td> 
+				 
+			      </tr>';
+		 
+			if ($result = $mysqli->query($query)) {
+			    while ($row = $result->fetch_assoc()) {
+				$field1name = $row["key"];
+				$field2name = $row["department"];
+				$field3name = $row["news"];
+				       $field4name = $row["link"];
+			 
+				echo '<tr> 
+					  <td>'.$field1name.'</td> 
+					  <td>'.$field2name.'</td> 
+					  <td><a href="file/'.$field4name.' "target="_blank">'.$field3name.'</a></td> 
+					  
+				      </tr>';
+			    }
+			    $result->free();
+			} 
+		?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div> 
+
+
+
+
+
+</body>
+ 	
+
+</html>		
